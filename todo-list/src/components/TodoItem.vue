@@ -29,9 +29,10 @@ return{
 
 },
 methods:{
-  ...mapActions(["deleteTodo",]),
+  ...mapActions(["deleteTodo","doneTodo"]),
   donefun(){
     this.done = this.done == true ? false : true;
+    this.doneTodo(this.done);
   },
   },
 

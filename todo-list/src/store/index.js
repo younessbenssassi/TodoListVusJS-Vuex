@@ -19,6 +19,9 @@ export default new Vuex.Store({
     deleteTodo({commit},id){
       commit('delete_todo',id);
     },
+    doneTodo({commit},bol){
+      commit('done_todo',bol);
+    },
   },
   mutations: {
     add_todo(state,todo){
@@ -27,7 +30,18 @@ export default new Vuex.Store({
     },
     delete_todo(state,id){
       state.todos = state.todos.filter((todo)=>todo.id !=id);
-      state.num -= 1;
+      if(state.num>0){
+        state.num -= 1;
+      }
+    },
+    done_todo(state,bol){
+      if (bol) {
+        if(state.num>0){
+          state.num -= 1;
+        }
+      }else {
+        state.num += 1;
+      }
     },
   },
   modules: {
